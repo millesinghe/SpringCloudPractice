@@ -1,0 +1,15 @@
+package com.springcloud.shop.controller;
+
+import com.springcloud.shop.model.Product;
+
+public class ProductController {
+	
+	public Product createProduct(Product product) {
+		return null;
+	}
+	
+	public Product getProduct(String Id) {
+		return null;
+	}
+
+}
