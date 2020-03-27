@@ -1,9 +1,0 @@
-package com.springcloud.shop.repo;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.springcloud.shop.model.Coupon;
-
-public interface CoupanRepo extends JpaRepository<Coupon, Long>{
-
-}

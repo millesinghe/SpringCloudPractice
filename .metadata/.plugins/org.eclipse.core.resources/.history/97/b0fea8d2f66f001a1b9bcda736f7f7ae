@@ -1,5 +1,0 @@
-package com.springcloud.shop.repo;
-
-public interface CoupanRepo {
-
-}
