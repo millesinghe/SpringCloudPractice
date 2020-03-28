@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.springcloud.shop.dao.Coupon;
 
-@FeignClient("coupon-service")
+@FeignClient("zuul-proxy")
+//@RibbonClient("coupon-service")
 public interface CouponClient {
 
-	@GetMapping("/coupon-api/coupons/{code}")
+	@GetMapping("coupon-service/coupon-api/coupons/{code}")
 	Coupon getCoupon(@PathVariable String code);
 }

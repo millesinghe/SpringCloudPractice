@@ -27,7 +27,7 @@ public class CouponController {
 
 	@GetMapping("/coupons/{code}")
 	public Coupon getCoupon(@PathVariable("code") String code) {
-		System.out.println("Server 2");
+		System.out.println("Server 3");
 		return repo.findByCode(code);
 
 	}
