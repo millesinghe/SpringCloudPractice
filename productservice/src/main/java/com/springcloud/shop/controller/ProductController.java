@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.springcloud.shop.dao.Coupon;
 import com.springcloud.shop.model.Product;
 import com.springcloud.shop.repo.ProductRepo;
@@ -25,6 +26,7 @@ public class ProductController {
 	@Autowired
 	CouponClient couponClient;
 
+	@HystrixCommand(fallbackMethod = "handleErrorCase")
 	@PostMapping("/products")
 	public Product createProduct(@RequestBody Product product) {
 		Coupon coupon = couponClient.getCoupon(product.getCouponCode());
@@ -36,6 +38,10 @@ public class ProductController {
 	@GetMapping("/products/{id}")
 	public Optional<Product> getProduct(@PathVariable String id) {
 		return repo.findById(Long.parseLong(id));
+	}
+	
+	private Product handleErrorCase(Product product) {
+		return product;
 	}
 
 }
